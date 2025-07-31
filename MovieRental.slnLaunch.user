@@ -1,6 +1,6 @@
 [
   {
-    "Name": "New Profile",
+    "Name": "Run API First",
     "Projects": [
       {
         "Path": "MovieRental\\MovieRental.csproj",
