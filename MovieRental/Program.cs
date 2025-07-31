@@ -9,6 +9,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddEntityFrameworkSqlite().AddDbContext<MovieRentalDbContext>();
 
+builder.Services.AddScoped<IMovieFeatures, MovieFeatures>();
 builder.Services.AddScoped<IRentalFeatures, RentalFeatures>();
 
 var app = builder.Build();
