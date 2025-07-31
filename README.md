@@ -7,3 +7,4 @@
  * No exceptions are being caught in this api, how would you deal with these exceptions?
 	* You may use an exception middleware for global purposes
 	* You should try catch inside the database context for insertion or timeout related errors (specific errors), and even log the error
+ * I have added a launch profile to start both projects
