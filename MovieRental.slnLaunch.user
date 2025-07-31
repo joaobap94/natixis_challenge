@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "MovieRental\\MovieRental.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "MovieRental.WPF\\MovieRental.WPF.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
