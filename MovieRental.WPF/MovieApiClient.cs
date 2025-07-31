@@ -11,11 +11,26 @@ namespace MovieRental.WPF
 
         public async Task<List<Movie>> GetAllMoviesAsync()
         {
-            var response = await _http.GetAsync($"{_apiBaseUrl}/Movie");
-            response.EnsureSuccessStatusCode();
-            var json = await response.Content.ReadAsStringAsync();
-            var movies = JsonConvert.DeserializeObject<List<Movie>>(json);
-            return movies ?? new List<Movie>();
+            const int maxRetries = 5;
+            int msDelay = 1000;
+
+            for (int attempt = 1; attempt <= maxRetries; attempt++)
+            {
+                try
+                {
+                    var response = await _http.GetAsync($"{_apiBaseUrl}/Movie");
+                    response.EnsureSuccessStatusCode();
+                    var json = await response.Content.ReadAsStringAsync();
+                    var movies = JsonConvert.DeserializeObject<List<Movie>>(json);
+                    return movies ?? new List<Movie>();
+                }
+                catch (HttpRequestException) when (attempt < maxRetries)
+                {
+                    await Task.Delay(msDelay);
+                }
+            }
+
+            throw new Exception("API did not respond after several attempts.");
         }
     }
 }
