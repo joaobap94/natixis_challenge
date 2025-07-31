@@ -5,3 +5,5 @@
 /.vs/MovieRental
 /MovieRental/bin/Debug/net8.0
 /MovieRental/obj
+/MovieRental.WPF/bin/Debug/net9.0-windows
+/MovieRental.WPF/obj
