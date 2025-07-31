@@ -8,8 +8,8 @@ namespace MovieRental.Data
 	{
 		public DbSet<Movie.Movie> Movies { get; set; }
 		public DbSet<Rental.Rental> Rentals { get; set; }
-
-		private string DbPath { get; }
+        public DbSet<Customer.Customer> Customer { get; set; }
+        private string DbPath { get; }
 
 		public MovieRentalDbContext()
 		{
