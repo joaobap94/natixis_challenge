@@ -18,10 +18,16 @@ namespace MovieRental.Controllers
 
 
         [HttpPost]
-        public IActionResult Post([FromBody] Rental.Rental rental)
+        public async Task<IActionResult> Post([FromBody] Rental.Rental rental)
         {
-	        return Ok(_features.Save(rental));
+	        return Ok(await _features.Save(rental));
         }
 
-	}
+        [HttpGet]
+        public async Task<IActionResult> Get([FromQuery] string customerName )
+        {
+            var rentals = await _features.GetRentalsByCustomerName(customerName);
+            return rentals.Any() ? Ok(rentals) : NoContent();
+        }
+    }
 }
